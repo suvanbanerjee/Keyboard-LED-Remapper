@@ -22,7 +22,7 @@ chmod +x script.sh
 
 ## Authors
 
-[GitHub: suvanbanerjee](https://github.com/suvanbanerjee)
+[Suvan Banerjee](https://github.com/suvanbanerjee)
 
 ## License
 
