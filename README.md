@@ -1,23 +1,24 @@
-# Scroll LED to Disk Activity LED
-Use the Scroll Lock LED on your keyboard as the Disk Activity LED (also known as HDDLED)
+# Keyboard LED Remapper
+
+
+Apart form the CAPS LOCK the NUM LOCK and the SCROLL LOCK on your keyboard are not used for anything meaninfull. This project aims to change that by allowing you to use these LED's as indicators for various system events. Like Disk Activity, Network Activity, CPU Usage, etc.
 
 ## Description
-This is a simple script which will make the scroll lock LED on keyboard to function as Disk Operation LED.<br /> You can edit the code for refresh time and which led to use(num caps or scroll).<br />This script will not effect CPU perfomance and will NOT consume a lot of memory.<br />RAM usage is about 1MiB and  CPU utilization is roughly 1% on a 3rd gen i3.
 
-## 🚀 Getting Started
+This project is my first github project. It used to be a simple shell script that I used to run on my computer to use the Scroll Lock LED as the Disk Activity LED. But now after 2 years of learning programming, I have decided to make it better now this is TUI installer that can applay the earlier mentioned functionality to your computer with a bonus of choosing any light on your keyboard and some other cool functions to choose from. It works on both Wayland and X11.
 
-### ⛭ Installing
+## Legacy Version
+The original shell script is still available in the legacy branch. you can find it [here](https://github.com/suvanbanerjee/keyboard-led-remapper/tree/legacy)
 
-* You can get the script in this repo or by clicking this [link](https://drive.google.com/file/d/174egmip4ZDHQXc9KX_Xnjaj2MnVDgIyq/view?usp=sharing) 
+## Getting Started
 
-### ⛭ Executing program
+Just copy and paste in terminal DONE!
 
-* Firstly make the script executable by
+```bash
+curl -s https://raw.githubusercontent.com/suvanbanerjee/keyboard-led-remapper/main/install.sh | bash
 ```
-chmod +x script.sh
-```
-* Then add this file to startup 
-* Here you will find how to do it<br/> [https://askubuntu.com/questions/814/how-to-run-scripts-on-start-up](https://askubuntu.com/questions/814/how-to-run-scripts-on-start-up)
+
+## Getting Started the old way
 
 
 ## 👥 Author
