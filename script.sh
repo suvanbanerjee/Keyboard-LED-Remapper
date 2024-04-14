@@ -15,14 +15,12 @@ getVmstat() {
 #turn led on
 function led_on()
 {
-    #setleds -L +${INDICATOR} < ${CONSOLE}
-    xset led named "Scroll Lock"
+    setleds -L +${INDICATOR} < ${CONSOLE}
 }
 #turn led off
 function led_off()
 {
-    #setleds -L -${INDICATOR} < ${CONSOLE}
-    xset -led named "Scroll Lock"
+    setleds -L -${INDICATOR} < ${CONSOLE}
 }
 # initialise variables
 NEW=$(getVmstat)
