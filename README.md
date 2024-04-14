@@ -15,7 +15,7 @@ The original shell script is still available in the legacy branch. you can find 
 Just copy and paste in terminal DONE!
 
 ```bash
-curl -s https://raw.githubusercontent.com/suvanbanerjee/keyboard-led-remapper/main/install.sh | bash
+curl -s https://raw.githubusercontent.com/suvanbanerjee/keyboard-led-remapper/main/installer.sh | bash
 ```
 
 ## Getting Started the old way
