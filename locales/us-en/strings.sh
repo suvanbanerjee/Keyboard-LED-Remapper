@@ -2,6 +2,7 @@
 
 
 TITLE="Choose one of the following options:"
+TITLE_CONFIG="Choose a Key"
 
 MENU="
 
@@ -10,4 +11,10 @@ Choose one of the following options:
 
 "
 
-export TITLE MENU
+CONFIG="
+
+Choose a key to toggle:
+
+"
+
+export TITLE MENU CONFIG TITLE_CONFIG

@@ -11,11 +11,13 @@ CHOICE=$(whiptail --title "$TITLE" --cancel-button "Exit" --menu "$MENU" 15 50 4
     3>&1 1>&2 2>&3)
 
 if [ "$CHOICE" == "1" ]; then
-    bash TUI/install_mod.sh
+    source TUI/config.sh
+    echo "Key: $KEY"
+    sleep 2
 elif [ "$CHOICE" == "2" ]; then
-    bash TUI/uninstall_mod.sh
+    source TUI/uninstall_mod.sh
 elif [ "$CHOICE" == "3" ]; then
-    bash TUI/test_keyboard.sh
+    source TUI/test_keyboard.sh
 elif [ -z "$CHOICE" ]; then
     exit 0
 fi
