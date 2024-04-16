@@ -12,12 +12,23 @@ CHOICE=$(whiptail --title "$TITLE" --cancel-button "Exit" --menu "$MENU" 15 50 4
 
 if [ "$CHOICE" == "1" ]; then
     source TUI/config.sh
-    echo "Key: $KEY"
-    sleep 2
+    if [ "$SESSION_TYPE" == "Wayland" ]; then
+        source TUI/Wayland/KEYBOARD_ID.sh
+    fi
+    source TUI/action.sh
 elif [ "$CHOICE" == "2" ]; then
-    source TUI/uninstall_mod.sh
+    source TUI/uninstall.sh
 elif [ "$CHOICE" == "3" ]; then
     source TUI/test_keyboard.sh
 elif [ -z "$CHOICE" ]; then
     exit 0
 fi
+
+if [ "$SESSION_TYPE" == "Wayland" ]; then
+    source TUI/Wayland/apply_mod.sh
+else
+    source TUI/X11/apply_mod.sh
+fi
+
+echo "Mod applied successfully. Please restart your session."
+exit 0
