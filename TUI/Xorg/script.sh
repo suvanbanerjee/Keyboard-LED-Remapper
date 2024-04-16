@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# Check interval seconds
-CHECKINTERVAL=1
-
 # console
 CONSOLE=/dev/console
 
 #indicator to use [caps, num, scroll]
-INDICATOR=scroll
+INDICATOR=$KEY
 
 getVmstat() {
   cat /proc/vmstat|egrep "pgpgin|pgpgout"  
@@ -27,7 +24,6 @@ NEW=$(getVmstat)
 OLD=$(getVmstat)
 ## 
 while [ 1 ] ; do
-  #sleep $CHECKINTERVAL # slowdown a bit
   # get status 
   NEW=$(getVmstat)
   #compare state

@@ -5,11 +5,4 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-if [[ $1 == "unistall" ]]; then
-    echo -e "\n\e[33m[info]\e[0m Uninstalling..."
-    rm -rf /usr/local/bin/ssh-alias
-    echo -e "\n\e[32m[done]\e[0m Uninstalled successfully!"
-    exit 0
-fi
-
-source /TUI/main.sh
+source TUI/main.sh
