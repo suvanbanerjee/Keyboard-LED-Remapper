@@ -29,6 +29,3 @@ if [ "$SESSION_TYPE" == "Wayland" ]; then
 else
     source TUI/X11/apply_mod.sh
 fi
-
-echo "Mod applied successfully. Please restart your session."
-exit 0
