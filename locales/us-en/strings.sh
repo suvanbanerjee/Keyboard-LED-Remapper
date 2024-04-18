@@ -3,6 +3,7 @@
 
 TITLE="Choose one of the following options:"
 TITLE_CONFIG="Choose a Key"
+TITLE_ACTION="Choose an Activity"
 
 MENU="
 
@@ -14,6 +15,11 @@ Choose one of the following options:
 CONFIG="
 
 Choose a key to toggle:
+
+"
+
+ACTION="
+Choose the type of activity you want to monitor:
 
 "
 
