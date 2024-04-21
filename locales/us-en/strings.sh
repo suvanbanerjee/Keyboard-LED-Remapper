@@ -4,6 +4,7 @@
 TITLE="Choose one of the following options:"
 TITLE_CONFIG="Choose a Key"
 TITLE_ACTION="Choose an Activity"
+TITLE_TEST="Test Keyboard Lights"
 
 MENU="
 
@@ -23,4 +24,10 @@ Choose the type of activity you want to monitor:
 
 "
 
-export TITLE MENU CONFIG TITLE_CONFIG
+TEST_KEYBOARD="
+
+Your keyboard lights should now be blinking.
+
+"
+
+export TITLE MENU CONFIG TITLE_CONFIG ACTION TEST_KEYBOARD TITLE_ACTION TITLE_TEST
