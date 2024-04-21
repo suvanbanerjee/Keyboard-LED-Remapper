@@ -1,9 +1,8 @@
 source locales/us-en/strings.sh
 KEY_ID=4
-RUN_TEST_KEYBOARD=true
 
 function test_keyboard() {
-    while [ "$RUN_TEST_KEYBOARD" = true ]; do
+    while :; do
         echo "1" > /sys/class/leds/input$KEY_ID::scrolllock/brightness
         echo "1" > /sys/class/leds/input$KEY_ID::numlock/brightness
         echo "1" > /sys/class/leds/input$KEY_ID::capslock/brightness
@@ -19,8 +18,12 @@ function tui() {
     CHOICE=$(whiptail --title "$TITLE_TEST" --msgbox "$TEST_KEYBOARD" 15 50 4 \
         3>&1 1>&2 2>&3)
     if [ "$CHOICE" == 1 ]; then
-        RUN_TEST_KEYBOARD=false
+        exit 0
     fi
 }
 
-test_keyboard & tui
+test_keyboard & 
+test_keyboard_pid=$!
+tui
+kill $test_keyboard_pid
+source TUI/main.sh

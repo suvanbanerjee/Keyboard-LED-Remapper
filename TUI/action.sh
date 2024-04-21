@@ -2,9 +2,15 @@
 
 source locales/us-en/strings.sh
 
-ACTION_KEY=$(whiptail --title "$TITLE_ACTION" --menu "$ACTION" 15 50 4 \
+ACTION_KEY=$(whiptail --title "$TITLE_ACTION" --cancel-button "Back" --menu "$ACTION" 15 50 4 \
     "Disk Activity" "" \
     "Network Activity" "" \
     3>&1 1>&2 2>&3)
 
-export ACTION_KEY
+exit_status=$?
+if [ $exit_status == 1 ]; then
+    source TUI/config.sh
+    source TUI/action.sh
+fi
+
+export ACTION_KEY 
