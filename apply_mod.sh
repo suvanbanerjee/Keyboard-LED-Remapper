@@ -18,24 +18,63 @@ done
 
 devices=($(for v in "${input_devices[@]}"; do echo "$v"; done | sort -u))
 
-getVmstat() {
-    cat /proc/vmstat | grep -E "pgpgin|pgpgout"
+function DiskActivity() {
+        
+    getVmstat() {
+        cat /proc/vmstat | grep -E "pgpgin|pgpgout"
+    }
+
+    # initialise variables
+    NEW=$(getVmstat)
+    OLD=$(getVmstat)
+
+    while :; do
+        NEW=$(getVmstat)
+        if [ "$NEW" = "$OLD" ]; then
+            for device in "${devices[@]}"; do
+                echo "0" > /sys/class/leds/input$device::$INDICATOR/brightness
+            done
+        else
+            for device in "${devices[@]}"; do
+                echo "1" > /sys/class/leds/input$device::$INDICATOR/brightness
+            done
+        fi
+        OLD=$NEW
+    done
 }
 
-# initialise variables
-NEW=$(getVmstat)
-OLD=$(getVmstat)
+function NetworkActivity() {
+    getNetstat() {
+        cat /proc/net/dev | grep -E "eth0|wlan0|wl*" | awk '{print $2,$10}'
+    }
 
-while :; do
-    NEW=$(getVmstat)
-    if [ "$NEW" = "$OLD" ]; then
-        for device in "${devices[@]}"; do
-            echo "0" > /sys/class/leds/input$device::$INDICATOR/brightness
-        done
-    else
-        for device in "${devices[@]}"; do
-            echo "1" > /sys/class/leds/input$device::$INDICATOR/brightness
-        done
-    fi
-    OLD=$NEW
-done
+    # initialise variables
+    NEW=$(getNetstat)
+    OLD=$(getNetstat)
+
+    while :; do
+        NEW=$(getNetstat)
+        if [ "$NEW" = "$OLD" ]; then
+            for device in "${devices[@]}"; do
+                echo "0" > /sys/class/leds/input$device::$INDICATOR/brightness
+            done
+        else
+            for device in "${devices[@]}"; do
+                echo "1" > /sys/class/leds/input$device::$INDICATOR/brightness
+            done
+        fi
+        OLD=$NEW
+    done
+}
+
+case $1 in
+    Disk)
+        DiskActivity
+        ;;
+    Network)
+        NetworkActivity
+        ;;
+    *)
+        exit 1
+        ;;
+esac
