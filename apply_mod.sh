@@ -1,21 +1,25 @@
 #!/bin/bash
 
-# indicator to use [caps, num, scroll]
 INDICATOR=$3
-device=4
+path="/sys/class/leds"
+pattern="input([0-9]+)::(scrolllock|numlock|capslock)"
+
+input_devices=()
+
+if [[ ! -d $path ]]; then
+    exit 1
+fi
+
+for led in "$path"/*; do
+    if [[ $led =~ $pattern ]]; then
+        input_devices+=("${BASH_REMATCH[1]}")
+    fi
+done
+
+devices=($(for v in "${input_devices[@]}"; do echo "$v"; done | sort -u))
 
 getVmstat() {
     cat /proc/vmstat | grep -E "pgpgin|pgpgout"
-}
-
-# turn led on
-function led_on() {
-    echo "1" > /sys/class/leds/input$device::$INDICATOR/brightness
-}
-
-# turn led off
-function led_off() {
-    echo "0" > /sys/class/leds/input$device::$INDICATOR/brightness
 }
 
 # initialise variables
@@ -24,12 +28,14 @@ OLD=$(getVmstat)
 
 while :; do
     NEW=$(getVmstat)
-
-    # compare state
     if [ "$NEW" = "$OLD" ]; then
-        led_off
+        for device in "${devices[@]}"; do
+            echo "0" > /sys/class/leds/input$device::$INDICATOR/brightness
+        done
     else
-        led_on
+        for device in "${devices[@]}"; do
+            echo "1" > /sys/class/leds/input$device::$INDICATOR/brightness
+        done
     fi
     OLD=$NEW
 done
