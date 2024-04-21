@@ -1,16 +1,33 @@
 source locales/us-en/strings.sh
-KEY_ID=4
+
+
+path="/sys/class/leds"
+pattern="input([0-9]+)::(scrolllock|numlock|capslock)"
+
+input_devices=()
+
+if [[ ! -d $path ]]; then
+    exit 1
+fi
+
+for led in "$path"/*; do
+    if [[ $led =~ $pattern ]]; then
+        input_devices+=("${BASH_REMATCH[1]}")
+    fi
+done
+
+devices=($(for v in "${input_devices[@]}"; do echo "$v"; done | sort -u))
 
 function test_keyboard() {
     while :; do
-        echo "1" > /sys/class/leds/input$KEY_ID::scrolllock/brightness
-        echo "1" > /sys/class/leds/input$KEY_ID::numlock/brightness
-        echo "1" > /sys/class/leds/input$KEY_ID::capslock/brightness
-        sleep 0.5
-        echo "0" > /sys/class/leds/input$KEY_ID::scrolllock/brightness
-        echo "0" > /sys/class/leds/input$KEY_ID::numlock/brightness
-        echo "0" > /sys/class/leds/input$KEY_ID::capslock/brightness
-        sleep 1
+        for device in "${devices[@]}"; do
+            for led in "scrolllock" "numlock" "capslock"; do
+                echo "1" > /sys/class/leds/input$device::$led/brightness
+                sleep 0.1
+                echo "0" > /sys/class/leds/input$device::$led/brightness
+                sleep 0.1
+            done
+        done
     done
 }
 
