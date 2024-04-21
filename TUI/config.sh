@@ -13,5 +13,12 @@ if [ $exit_status == 1 ]; then
     source TUI/main.sh
     source TUI/config.sh
 fi
+if [ "$KEY" == "Num Lock" ]; then
+    KEY="numlock"
+elif [ "$KEY" == "Caps Lock" ]; then
+    KEY="capslock"
+elif [ "$KEY" == "Scroll Lock" ]; then
+    KEY="scrolllock"
+fi
 
 export KEY

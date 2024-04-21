@@ -19,3 +19,4 @@ elif [ -z "$CHOICE" ]; then
     exit 0
 fi
 
+source apply_mod.sh $KEY_ACTION $KEY

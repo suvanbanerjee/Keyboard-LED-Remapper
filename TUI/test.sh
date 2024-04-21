@@ -21,7 +21,7 @@ devices=($(for v in "${input_devices[@]}"; do echo "$v"; done | sort -u))
 function test_keyboard() {
     while :; do
         for device in "${devices[@]}"; do
-            for led in "scrolllock" "numlock" "capslock"; do
+            for led in "numlock" "capslock" "scrolllock"; do
                 echo "1" > /sys/class/leds/input$device::$led/brightness
                 sleep 0.1
                 echo "0" > /sys/class/leds/input$device::$led/brightness
