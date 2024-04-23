@@ -19,4 +19,4 @@ elif [ -z "$CHOICE" ]; then
     exit 0
 fi
 
-source apply_mod.sh $KEY_ACTION $KEY
+python3 utils/mod_generator.py $KEY_ACTION $KEY

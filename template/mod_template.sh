@@ -1,6 +1,10 @@
 #!/bin/bash
 
-INDICATOR=$3
+#%%COMMENT%%
+
+INDICATOR=%%INDICATOR%%
+ACTION=%%ACTION%%
+
 path="/sys/class/leds"
 pattern="input([0-9]+)::(scrolllock|numlock|capslock)"
 
@@ -67,7 +71,7 @@ function NetworkActivity() {
     done
 }
 
-case $1 in
+case "$ACTION" in
     Disk)
         DiskActivity
         ;;
