@@ -17,7 +17,12 @@ Just copy and paste in terminal DONE!
 sh -c "curl -s https://raw.githubusercontent.com/suvanbanerjee/Keyboard-LED-Remapper/main/installer.sh -o installer.sh && chmod +x installer.sh && sudo ./installer.sh && rm installer.sh"
 ```
 
-## Getting Started the old way
+## Screenshots
+
+![alt text](screenshots/image.png)
+![alt text](screenshots/image-1.png)
+![alt text](screenshots/image-3.png)
+![alt text](screenshots/image-2.png)
 
 
 ## 👥 Author
