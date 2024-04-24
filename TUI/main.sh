@@ -9,6 +9,12 @@ CHOICE=$(whiptail --title "$TITLE" --cancel-button "Exit" --menu "$MENU" 15 50 4
     3>&1 1>&2 2>&3)
 
 if [ "$CHOICE" == "1" ]; then
+    # Check for existing installation
+    if [ -f "/etc/key_mod/mod.sh" ]; then
+        echo -e "\n\e[31m[fail]\e[0m Existing installation found..."
+        echo -e "       Please uninstall the existing installation before running the installer.\n"
+        exit 1
+    fi
     source TUI/config.sh
     source TUI/action.sh
     python3 utils/mod_generator.py $KEY_ACTION $KEY

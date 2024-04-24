@@ -28,17 +28,10 @@ fi
 git clone --quiet https://github.com/suvanbanerjee/Keyboard-LED-Remapper.git "$installer_path"
 cd "$installer_path" || exit 1
 
-#Check for exixting installation
-if [-f "$ls /etc/systemd/system/ | grep -E '(numlock|capslock|scrolllock).service'"]; then
-    echo -e "\n\e[31m[fail]\e[0m Existing installation found..."
-    echo -e "       Please uninstall the existing installation before running the installer.\n"
-    exit 1
-fi
-
 # Execute the installer entrypoint
 bash setup.sh "$@"
 
-# Delete Keyboard-LED-Remapper directory once the installer is successfull
+# Delete Keyboard-LED-Remapper directory once the installer is successful
 exit_status="$?"
 if [ "$exit_status" -eq 0 ]; then
     cd "$RUN_AS_HOME" || exit 1
