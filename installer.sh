@@ -18,6 +18,11 @@ if ! command -v git &>/dev/null; then
     exit 1
 fi
 
+#checking for prerequisites
+if ! command -v python3 &>/dev/null || ! command -v whiptail &>/dev/null; then
+    source utils/install_required.sh
+fi
+
 # Remove keyboard-led-remapper directory if exists
 installer_path="$RUN_AS_HOME/Keyboard-LED-Remapper"
 if [[ -d "$installer_path" ]]; then
