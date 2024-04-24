@@ -33,6 +33,7 @@ if [-f "$ls /etc/systemd/system/ | grep -E '(numlock|capslock|scrolllock).servic
     echo -e "\n\e[31m[fail]\e[0m Existing installation found..."
     echo -e "       Please uninstall the existing installation before running the installer.\n"
     exit 1
+fi
 
 # Execute the installer entrypoint
 bash setup.sh "$@"
