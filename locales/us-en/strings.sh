@@ -5,6 +5,7 @@ TITLE="Choose one of the following options:"
 TITLE_CONFIG="Choose a Key"
 TITLE_ACTION="Choose an Activity"
 TITLE_TEST="Test Keyboard Lights"
+TITLE_UNINSTALL="Uninstall"
 
 MENU="
 
@@ -27,6 +28,12 @@ Choose the type of activity you want to monitor:
 TEST_KEYBOARD="
 
 Your keyboard lights should now be blinking.
+
+"
+
+UNINSTALL="
+
+This will uninstall the mod and remove all associated files.
 
 "
 
