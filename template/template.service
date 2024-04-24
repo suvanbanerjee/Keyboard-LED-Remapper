@@ -1,0 +1,9 @@
+[Unit]
+Description=Keyboard LED Remapping - %%DESC%%
+
+[Service]
+WorkingDirectory=/
+ExecStart=bash /etc/key_mod/mod.sh
+
+[Install]
+WantedBy=multi-user.target

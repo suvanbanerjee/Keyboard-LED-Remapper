@@ -20,3 +20,11 @@ elif [ -z "$CHOICE" ]; then
 fi
 
 python3 utils/mod_generator.py $KEY_ACTION $KEY
+mkdir -p /etc/key_mod
+mv mod.sh /etc/key_mod
+chmod +x /etc/key_mod/mod.sh
+python3 utils/service_generator.py $KEY_ACTION $KEY
+mv "$KEY.service" /etc/systemd/system/
+/sbin/restorecon -v "/etc/systemd/system/$KEY.service"
+systemctl start "$KEY.service"
+systemctl enable "$KEY.service"

@@ -1,9 +1,0 @@
-[Unit]
-Description = Keyboard LED Remapping
-
-[Service]
-workingDirectory = /
-ExecStart = %%TARGET%%
-
-[Install]
-WantedBy = multi-user.target
