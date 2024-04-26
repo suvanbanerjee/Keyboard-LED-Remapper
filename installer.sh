@@ -2,13 +2,7 @@
 
 # Check if running as root
 if [[ $EUID -ne 0 ]]; then
-    # Ask user for password
-    read -s -p "Enter your password: " password
-    echo "$password" | sudo -S true &>/dev/null
-    if [ $? -ne 0 ]; then
-        echo -e "\n\e[31m[fail]\e[0m Incorrect password..."
-        exit 1
-    fi
+    echo -e "\n\e[31m[fail]\e[0m Please run the installer as root..."
 fi
 
 # Check for git command to be installed
