@@ -2,6 +2,13 @@
 
 #%%COMMENT%%
 
+# Replace the %%INDICATOR%% and %%ACTION%% placeholders with the actual values
+# if you want to use this mod manually.
+# Valid values for %%INDICATOR%% are "capslock", "numlock", and "scrolllock"
+# Valid values for %%ACTION%% are "Disk" and "Network" 
+# Example: INDICATOR=capslock ACTION=Disk
+# Make sure the D and N are capitalized in the ACTION value
+
 INDICATOR=%%INDICATOR%%
 ACTION=%%ACTION%%
 

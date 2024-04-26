@@ -3,6 +3,7 @@
 # Check if running as root
 if [[ $EUID -ne 0 ]]; then
     echo -e "\n\e[31m[fail]\e[0m Please run the installer as root..."
+    exit 1
 fi
 
 # Check for git command to be installed

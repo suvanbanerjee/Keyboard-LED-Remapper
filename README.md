@@ -22,6 +22,16 @@ Just copy and paste in terminal DONE!
 sh -c "curl -s https://raw.githubusercontent.com/suvanbanerjee/Keyboard-LED-Remapper/main/installer.sh -o installer.sh && chmod +x installer.sh && sudo ./installer.sh && rm installer.sh"
 ```
 
+## How this works (Why this script needs root permission)
+
+The script check the contents of `/sys/class/leds/` to find the LEDs on your keyboard. It then uses the `echo` command to write to the LED files in `/sys/class/leds/`. The script runs in the background and checks for the system events you have chosen. When the event occurs, the script writes to the LED file to turn the LED on. When the event stops, the script writes to the LED file to turn the LED off.
+
+To run constantly in the background, the script creates a systemd service that runs the script at startup. The name of the service is the name of the led you have chosen. for example, if you have chosen the Scroll Lock LED, the service will be called `scrolllock.service`.
+
+## Run this manually
+
+If you don't want to run the installer, you can run the script manually. just edit the `mod_templed.sh` file and change the values of the variables at the top of the file. It is well commented, so you should not have any problem understanding it. Then add the script to your startup applications.
+
 ## Screenshots
 
 ![alt text](screenshots/image.png)
