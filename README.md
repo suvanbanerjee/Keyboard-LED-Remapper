@@ -1,4 +1,4 @@
-# Keyboard LED Remapper
+# Keyboard LED Remapper (Linux)
 
 Apart from the CAPS LOCK, the NUM LOCK, and the SCROLL LOCK on your keyboard are not used for anything meaningful. This project aims to change that by allowing you to use these LEDs as indicators for various system events, such as Disk Activity, Network Activity, CPU Usage, etc.
 
@@ -10,6 +10,8 @@ This project is my first GitHub project. It used to be a simple shell script tha
 
 - Python
 - Newt-whiptail (for the TUI)
+
+Note: The script will install the required packages if they are not already installed. no need to worry about that.
 
 ## Legacy Version
 The original shell script is still available in the legacy branch. you can find it [here](https://github.com/suvanbanerjee/keyboard-led-remapper/tree/legacy)
