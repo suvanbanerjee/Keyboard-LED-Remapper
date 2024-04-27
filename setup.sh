@@ -5,6 +5,11 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
+#checking for prerequisites
+if ! command -v python3 &>/dev/null || ! command -v whiptail &>/dev/null; then
+    source utils/install_required.sh
+fi
+
 source TUI/main.sh
 
 exit_status=$?
